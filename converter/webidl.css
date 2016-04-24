@@ -1,0 +1,276 @@
+html {
+	height: 100%;
+	background: hsl(0, 0%, 90%);
+	color: hsl(0, 0%, 10%);
+}
+
+body {
+	overflow: scroll;
+	min-height: 100%;
+}
+
+
+html {
+	background-color: hsl(215, 70%, 30%);
+	background-image: radial-gradient(100% 50% at center, hsla(215, 0%, 100%, 0.05), hsla(215, 0%, 0%, 0.05), hsla(215, 0%, 100%, 0.0)),
+	                  linear-gradient(hsla(215, 100%, 100%, 0.04) 2px, transparent 2px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 0.04) 2px, transparent 2px),
+	                  linear-gradient(hsla(215, 100%, 100%, 0.04) 1px, transparent 1px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 0.04) 1px, transparent 1px);
+	background-size: auto, 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+	background-position: center, -2px -82px, -82px -2px, -1px -1px, -1px -1px;
+	background-repeat: no-repeat, repeat, repeat, repeat, repeat;
+	color: hsl(0, 0%, 100%);
+}
+
+
+
+
+
+main {
+	padding: 20px;
+}
+
+
+
+
+
+
+details {
+	margin: 20px;
+}
+
+summary {
+	position: relative;
+	padding: 15px 20px 15px 40px;
+	background: hsla(0, 0%, 0%, 0.05);
+	font: 700 24px/30px Lato, sans-serif;
+	cursor: pointer;
+	outline: none;
+	-webkit-user-select: none;
+}
+
+summary:hover { background: hsla(0, 0%, 0%, 0.1) }
+summary:active { background: hsla(0, 0%, 0%, 0.2) }
+
+details summary::before {
+	position: absolute;
+	left: 15px;
+	content: '+';
+}
+
+details[open] summary::before { content: '-' }
+
+
+
+
+
+details.validator {}
+details.validator summary {}
+
+details.validator ul {
+	margin: 20px;
+}
+
+details.validator ul::before {
+	font: 300 12px Lato, sans-serif;
+}
+
+details.validator ul.interfaces::before { content: 'Interfaces' }
+details.validator ul.types::before { content: 'Types' }
+
+details.validator ul:empty::after {
+	content: "It's all good";
+	display: block;
+	width: 130px;
+	border-radius: 20px;
+	padding: 2px 5px 4px;
+	margin-left: 15px;
+	background: hsl(120, 80%, 45%);
+	text-align: center;
+	color: white;
+	font: 16px Lato, sans-serif;
+}
+
+details.validator li {
+	padding-left: 20px;
+	border-left: 5px solid transparent;
+	font: 16px/20px Lato, sans-serif;
+}
+
+details.validator li.added {
+	border-left-color: currentColor;
+	color: hsl(120, 100%, 40%);
+}
+
+details.validator li.removed {
+	border-left-color: currentColor;
+	color: hsl(10, 100%, 40%);
+}
+
+
+
+
+
+
+
+
+details.overview {}
+details.overview summary {}
+
+details.overview ul {
+	margin: 20px;
+}
+
+details.overview ul::before {
+	font: 300 12px Lato, sans-serif;
+}
+
+details.overview ul.definitions::before { content: 'Definitions' }
+details.overview ul.types::before { content: 'Types' }
+
+details.overview ul:empty::after {
+	content: "WHAT!? WHERE IS IT!?";
+	display: block;
+	width: 300px;
+	border-radius: 20px;
+	padding: 2px 5px 4px;
+	margin-left: 15px;
+	background: hsl(0, 80%, 45%);
+	text-align: center;
+	color: white;
+	font: 16px Lato, sans-serif;
+}
+
+details.overview li {
+	padding-left: 20px;
+	border-left: 5px solid transparent;
+	font: 16px/20px Lato, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+code.block {
+	position: relative;
+	display: block;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 10px;
+	margin: 10px 0 20px;
+	background: hsl(215, 10%, 15%);
+	color: hsl(215, 10%, 95%);
+	font: 16px/20px Inconsolata, monospace;
+	text-shadow: 0 1px 0 black;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	vertical-align: top;
+	white-space: pre;
+}
+
+
+
+
+
+
+
+article.interface {
+	padding: 20px;
+	margin: 20px;
+}
+
+article.interface > header {
+	font: bold 30px/40px Lato, sans-serif;
+}
+
+article.interface > header span:not(.name) {
+	opacity: 0.3;
+}
+
+article.interface h1,
+article.interface caption {
+	padding: 0;
+	margin: 20px 0 0;
+	text-align: center;
+	font: 600 17px/20px Lato, sans-serif;
+}
+
+article.interface h1::after,
+article.interface caption::after {
+	display: block;
+	content: '';
+	height: 9px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	margin-bottom: 1px;
+	background: linear-gradient(hsla(215, 100%, 100%, 1) 1px, transparent 1px) center no-repeat;
+	background-size: 100% 1px;
+}
+
+
+
+article.interface table {
+	font: normal 20px/30px Lato, sans-serif;
+}
+
+article.interface td {
+	border: 1px solid hsla(215, 100%, 100%, 0.1);
+}
+
+article.interface td code.block {
+	margin: 0;
+}
+
+
+
+article.interface table.constructor td {
+	color: hsl(215, 100%, 90%);
+	font: 16px/20px Inconsolata, monospace;
+/* 	text-shadow: 0 1px 0 black; */
+	-moz-tab-size: 4;
+	tab-size: 4;
+	white-space: pre;
+}
+
+article.interface table.constructor td em {
+	color: hsl(215, 100%, 100%);
+	font-weight: bold;
+}
+
+
+
+article.interface table.attributes td {
+	padding: 0 20px;
+}
+
+article.interface table.attributes td:not(.name) {
+	opacity: 0.5;
+}
+
+article.interface td.nullable {}
+article.interface td.type {}
+article.interface td.name {
+	font-weight: 500;
+}
+
+
+
+
+section.constructor {}
+
+section.attributes {}
+
+section.events {}
+
+section.methods {}
+
+
+
+

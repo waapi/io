@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<title>Web Animations API i/o Technical Reference</title>
+	
+	<!-- Stylesheets -->
+	<style>
+		/* Fonts */
+		@font-face { font-family: Inconsolata; src: url(/assets/fonts/Inconsolata-Regular.ttf); }
+		@font-face { font-family: Inconsolata; font-weight: bold; src: url(/assets/fonts/Inconsolata-Bold.ttf); }
+		@font-face { font-family: Lato; font-weight: 100; font-style: normal; src: url(/assets/fonts/LatoLatinHair-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 100; font-style: italic; src: url(/assets/fonts/LatoLatinHair-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 200; font-style: normal; src: url(/assets/fonts/LatoLatinThin-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 200; font-style: italic; src: url(/assets/fonts/LatoLatinThin-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 300; font-style: normal; src: url(/assets/fonts/LatoLatinLight-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 300; font-style: italic; src: url(/assets/fonts/LatoLatinLight-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 400; font-style: normal; src: url(/assets/fonts/LatoLatin-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 400; font-style: italic; src: url(/assets/fonts/LatoLatin-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 500; font-style: normal; src: url(/assets/fonts/LatoLatinMed-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 500; font-style: italic; src: url(/assets/fonts/LatoLatinMed-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 600; font-style: normal; src: url(/assets/fonts/LatoLatinSemBd-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 600; font-style: italic; src: url(/assets/fonts/LatoLatinSemBd-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 700; font-style: normal; src: url(/assets/fonts/LatoLatin-Bold.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 700; font-style: italic; src: url(/assets/fonts/LatoLatin-BoldItalic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 800; font-style: normal; src: url(/assets/fonts/LatoLatinExtBd-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 800; font-style: italic; src: url(/assets/fonts/LatoLatinExtBd-Italic.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 900; font-style: normal; src: url(/assets/fonts/LatoLatinBlack-Regular.woff) format('woff'); }
+		@font-face { font-family: Lato; font-weight: 900; font-style: italic; src: url(/assets/fonts/LatoLatinBlack-Italic.woff) format('woff'); }
+	</style>
+	<link rel="stylesheet" href="/css/unstyle.css">
+	<link rel="stylesheet" href="webidl.css">
+	
+	<!-- Scripts -->
+	<script src="/js/poly.js"></script>
+	<script src="/js/web-animations-next.min.js"></script>
+	<script src="/js/acorn.js"></script>
+	<script src="webidl2.js"></script>
+	<script src="converter.js"></script>
+
+
+<body>
+	<!-- Markup -->
+	<main>
+		<details>
+			<summary>webanimations.idl</summary>
+			<code class="block json"></code>
+		</details>
+		<details class="validator">
+			<summary>Validator</summary>
+		</details>
+		<details class="overview">
+			<summary>Overview</summary>
+		</details>
+		<details class="preview">
+			<summary>Preview</summary>
+		</details>
+	</main>
+
+	<p>Testing blueprint-like design for API:</p>
+
+	<article class="interface">
+		<header>
+			<span class="type">interface</span> <span class="name">Animation</span> <span class="inheritance">extends EventTarget</span>
+		</header>
+		<table class="constructor">
+			<caption>CONSTRUCTOR</caption>
+			<tr>
+				<td>var foo = new <em>Animation</em>(
+	expects something like <em>AnimationEffectReadOnly</em>,
+	expects something like <em>AnimationTimeline</em>
+);</td>
+			</tr>
+<!-- 			<tr>
+				<td>
+					<code class="block">var foo = new Animation(
+	AnimationEffectReadOnly-like,
+	AnimationTimeline-like
+);</code>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<code class="block">var example = new Animation(
+	new KeyframeEffect(…),
+	document.timeline
+);</code>
+				</td>
+			</tr> -->
+		</table>
+		<table class="attributes">
+			<caption>ATTRIBUTES</caption>
+			<tr>
+				<td class="nullable"></td>
+				<td class="type">DOMString</td>
+				<td class="name">id</td>
+			</tr>
+			<tr>
+				<td class="nullable">nullable</td>
+				<td class="type">AnimationEffectReadOnly</td>
+				<td class="name">effect</td>
+			</tr>
+			<tr>
+				<td class="nullable">nullable</td>
+				<td class="type">AnimationTimeline</td>
+				<td class="name">timeline</td>
+			</tr>
+			<tr>
+				<td class="nullable">nullable</td>
+				<td class="type">double</td>
+				<td class="name">startTime</td>
+			</tr>
+		</table>
+		<table class="events">
+			<caption>EVENTS</caption>
+			
+		</table>
+		<table class="methods">
+			<caption>METHODS</caption>
+			
+		</table>
+	</article>
+	
+	
+	
+	
+	

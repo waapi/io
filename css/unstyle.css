@@ -1,0 +1,53 @@
+/*
+	Unstyle everything back to basics
+*/
+
+section, article, header, main, footer, aside, details, summary, nav, menu, figure, figcaption { display: block; }
+canvas, video, audio, progress { vertical-align: baseline; display: inline-block; }
+template, audio:not([controls]), [hidden], datalist { display: none; height: 0; }
+summary::-webkit-details-marker { display: none }
+button { width: auto; overflow: visible; }
+button, input, select, textarea { border-radius: 0; margin: 0; font-size: 100%; line-height: normal; vertical-align: middle; }
+button::-moz-focus-inner, input::-moz-focus-inner { padding: 0; border: 0; }
+button, input[type="button"], input[type="reset"], input[type="submit"], select { color: inherit; border: none; padding: 0; outline: 0; -webkit-appearance: none; }
+button, input[type="button"], input[type="reset"], input[type="submit"], input[type="checkbox"], label, select { cursor: pointer; }
+input[type="search"] { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; -webkit-appearance: textfield; }
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { height: auto; }
+fieldset { display: block; border: none; padding: 0; margin: 0; }
+legend { border: 0; padding: 0; }
+textarea { vertical-align: top; }
+textarea, pre { overflow: auto; }
+ul, li, dl, dt, dd, menu, dir { padding: 0; margin: 0; list-style: none; }
+table {border-collapse: collapse;border-spacing: 0;}
+td, th { padding: 0; }
+hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
+a, a:hover, a:active { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, h5, h6 { font-weight: inherit; font-size: inherit; margin: 0; }
+em, strong, small, code, kbd, pre, samp { font-size: inherit; font-style: inherit; font-weight: inherit; }
+p { display: block; margin: 0; }
+b { font-weight: bolder; }
+i { font-style: italic; }
+img { border: 0; }
+sup, sub { line-height: 0; vertical-align: middle; font-size: 58.3%; position: relative; }
+sup { top: -0.33333em; }
+sub { top: 0.33333em; }
+
+
+/* Initial styling */
+*, *::before, *::after { box-sizing: border-box }
+html, body {
+	padding: 0;
+	margin: 0;
+	-webkit-text-size-adjust: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
+	font: 18px/1.4 Lato, sans-serif;
+}
+
+html.font-lato,
+html.font-lato body { font-family: Lato, sans-serif }
+
+/* ::selection { background: hsla(53, 84%, 65%, 0.8); color: black; }
+::-moz-selection { background: hsla(53, 84%, 65%, 0.8); color: black; } */
+
