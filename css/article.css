@@ -1,0 +1,17 @@
+html {
+	height: 100%;
+	background: hsl(215, 70%, 30%);
+	color: hsl(0, 0%, 100%);
+}
+
+body {
+	overflow: scroll;
+	min-height: 100%;
+}
+
+html {
+}
+
+main {
+	padding: 20px;
+}

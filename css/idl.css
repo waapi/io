@@ -1,0 +1,284 @@
+
+article.interface {
+	padding: 20px;
+	margin: 20px;
+	background-image: linear-gradient(hsl(215, 70%, 33%) 2px, transparent 2px),
+	                  linear-gradient(90deg, hsl(215, 70%, 33%) 2px, transparent 2px),
+	                  linear-gradient(hsl(215, 70%, 33%) 1px, transparent 1px),
+	                  linear-gradient(90deg, hsl(215, 70%, 33%) 1px, transparent 1px);
+	background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+/* 	background-position: -2px -82px, -82px -2px, -1px -1px, -1px -1px; */
+/* 	background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px; */
+	background-repeat: repeat, repeat, repeat, repeat;
+}
+
+article.interface > header {
+	margin-bottom: 20px;
+	font: bold 30px/40px Body, sans-serif;
+}
+
+article.interface > header span:not(.name) {
+	color: hsl(215, 50%, 60%);
+}
+
+article.interface > header span.name {
+	position: relative;
+	display: inline-block;
+}
+
+article.interface > header span.name svg.underline {
+	position: absolute;
+	top: 1.2em;
+	left: 0;
+	right: 0;
+	box-sizing: content-box;
+	width: 100%;
+	height: 4px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+article.interface > header span.name svg.underline rect {
+	width: 100%;
+	height: 100%;
+	fill: url("#wall");
+}
+
+article.interface > header span.inheritance em {
+	position: relative;
+	color: hsl(215, 100%, 95%);
+}
+
+article.interface > header span.inheritance em::after {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	content: '';
+	height: 4px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	background-image: linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
+	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0);
+	background-repeat: repeat-x, no-repeat, no-repeat;
+	background-size: 9px 1px;
+	background-position: bottom, left bottom, right bottom;
+}
+
+
+
+article.interface a {
+	padding: 0 0.1em;
+	color: hsl(270, 50%, 100%);
+/* 	color: hsl(270, 50%, 70%); */
+}
+
+article.interface a svg.icon {
+	width: .7em;
+	height: .7em;
+	margin-right: 0.1em;
+}
+
+article.interface a.internal::before { content: '‹' }
+article.interface a.internal::after { content: '›' }
+
+/* article.interface a::after {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	height: 1px;
+	border-radius: 3px;
+	background: currentColor;
+}
+
+article.interface a:hover::after {
+	display: none;
+} */
+
+article.interface a:hover {
+	border-radius: 3px;
+	background: hsl(215, 100%, 100%);
+	color: hsl(215, 70%, 33%);
+}
+
+
+
+
+/*article.interface a::after {
+	position: absolute;
+	top: 95%;
+	left: -4px;
+	right: -4px;
+	bottom: -4px;
+	content: '';
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	background-image: linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
+	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0);
+	background-repeat: repeat-x, no-repeat, no-repeat;
+	background-size: 9px 1px;
+	background-position: bottom, left bottom, right bottom;
+	transition: all 200ms;
+}
+
+article.interface a:hover::after {
+	position: absolute;
+	top: 0;
+	left: -4px;
+	right: -4px;
+	bottom: -4px;
+	content: '';
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	background-color: hsla(215, 100%, 100%, 0.1);
+	background-image: linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
+	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
+	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
+	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0);
+	background-repeat: repeat-x, no-repeat, no-repeat, repeat-x, no-repeat, no-repeat;
+	background-size: 9px 1px;
+	background-position: bottom, left bottom, right bottom, top, left top, right top;
+}*/
+
+
+
+
+
+
+
+article.interface h1,
+article.interface caption {
+	position: relative;
+	padding: 0 0 20px;
+	margin: 20px 0 0;
+	text-align: center;
+	font: 600 17px/20px Body, sans-serif;
+}
+
+article.interface h1::after,
+article.interface caption::after {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 16px;
+	display: block;
+	content: '';
+	height: 7px;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	background: linear-gradient(hsla(215, 100%, 100%, 1) 1px, transparent 1px) center no-repeat;
+	background-size: 100% 1px;
+}
+
+
+
+article.interface table {
+	font: normal 20px/30px Body, sans-serif;
+}
+
+article.interface td code.block {
+	margin: 0;
+}
+
+
+
+td.formatted {
+	color: hsl(215, 100%, 90%);
+	font: 18px/20px Code, monospace;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	white-space: pre;
+}
+
+td.formatted em {
+	color: hsl(215, 100%, 100%);
+	font-weight: bold;
+}
+
+td.formatted span.sequence {
+	color: hsl(215, 100%, 100%);
+}
+
+
+table.attributes td + td,
+table.events td + td {
+	padding-left: 10px;
+}
+
+
+article.interface table td:not(.name) {
+	color: hsl(215, 50%, 60%);
+}
+
+article.interface td.nullable {}
+article.interface td.type {}
+article.interface td.name {
+	font-weight: 500;
+}
+
+
+article.interface td.readonly {
+	font-size: 0;
+	line-height: 0;
+}
+
+article.interface td.readonly + td {
+	padding-left: 0
+}
+
+article.interface span.readonly {
+	display: inline-block;
+	padding: 0.1em 0.3em;
+	border-radius: 1em;
+	margin: 0 0.4em 0 -0.0em;
+	background: hsl(215, 50%, 60%);
+	vertical-align: 0.25em;
+	color: hsl(215, 70%, 33%);
+	font: 12px/1 Code, monospace;
+}
+
+article.interface span.readonly[title] {
+	cursor: help;
+}
+
+
+
+
+
+table.constructor caption,
+table.attributes caption,
+table.events caption,
+table.methods caption {
+	padding-left: 2.0em;
+	padding-right: 0.5em;
+}
+
+table.constructor caption::before,
+table.attributes caption::before,
+table.events caption::before,
+table.methods caption::before {
+	position: absolute;
+	left: 5px;
+	bottom: 25px;
+/* 	vertical-align: 0.2em;
+	margin-right: 0.5em; */
+	font: 12px/1 Code, monospace;
+}
+
+table.constructor {}
+table.constructor caption::before { content: 'new' }
+
+table.attributes {}
+table.attributes caption::before { content: '.baz' }
+
+table.events {}
+table.events caption::before { content: '.then' }
+
+table.methods {}
+table.methods caption::before { content: 'fn()' }

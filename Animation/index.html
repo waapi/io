@@ -1,0 +1,86 @@
+---
+layout: article
+---
+<article class="interface">
+	<header>
+		<span class="type">interface</span>
+		<span class="name">
+			Animation
+			<svg class="underline"><rect></rect></svg>
+		</span>
+		<span class="inheritance">extends <a class="mdn" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mdn-icon"></use></svg>EventTarget</a></span>
+	</header>
+	<table class="constructor">
+		<caption>CONSTRUCTOR</caption>
+		<tr>
+			<td class="formatted">var foo = new <em>Animation</em>(
+	<a class="internal" href="/AnimationEffectReadOnly/">AnimationEffectReadOnly</a>,
+	<a class="internal" href="/AnimationTimeline/">AnimationTimeline</a>
+);</td>
+		</tr>
+	</table>
+	<table class="attributes">
+		<caption>ATTRIBUTES</caption>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">id</em> = <em class="idltype">String</em></td>
+		</tr>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">effect</em> = <a class="internal" href="/AnimationEffectReadOnly/">AnimationEffectReadOnly</a> || null</td>
+		</tr>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">timeline</em> = <a class="internal" href="/AnimationTimeline/">AnimationTimeline</a> || null</td>
+		</tr>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">startTime</em> = <em class="idltype">Number</em> || null</td>
+		</tr>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">currentTime</em> = <em class="idltype">Number</em> || null</td>
+		</tr>
+		<tr>
+			<td class="readonly"></td>
+			<td class="formatted">foo.<em class="name">playbackRate</em> = <em class="idltype">Number</em></td>
+		</tr>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+			<td class="formatted">foo.<em class="name">playState</em> = <a class="internal" href="/AnimationPlayState/">AnimationPlayState</a></td>
+		</tr>
+	</table>
+	<table class="events">
+		<caption>EVENTS</caption>
+		<tr>
+			<td class="formatted">foo.<em class="name">ready</em>.then(function(<a class="internal" href="/Animation/">Animation</a>) {})</td>
+		</tr>
+		<tr>
+			<td class="formatted">foo.<em class="name">finished</em>.then(function(<a class="internal" href="/Animation/">Animation</a>) {})</td>
+		</tr>
+		<tr>
+			<td class="formatted">foo.<em class="name">onfinish</em> = function() {}</td>
+		</tr>
+		<tr>
+			<td class="formatted">foo.<em class="name">oncancel</em> = function() {}</td>
+		</tr>
+	</table>
+	<table class="methods">
+		<caption>METHODS</caption>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>cancel</em></span><span class="arguments">()</span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>finish</em></span><span class="arguments">()</span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>play</em></span><span class="arguments">()</span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>pause</em></span><span class="arguments">()</span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>reverse</em></span><span class="arguments">()</span></td>
+		</tr>
+	</table>
+</article>

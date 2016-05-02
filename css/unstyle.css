@@ -42,12 +42,12 @@ html, body {
 	-webkit-text-size-adjust: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: subpixel-antialiased;
-	font: 18px/1.4 Lato, sans-serif;
+	font: 18px/1.4 Body, sans-serif;
 }
 
 html.font-lato,
-html.font-lato body { font-family: Lato, sans-serif }
+html.font-lato body { font-family: Body, sans-serif }
 
-/* ::selection { background: hsla(53, 84%, 65%, 0.8); color: black; }
-::-moz-selection { background: hsla(53, 84%, 65%, 0.8); color: black; } */
+::selection { background: hsla(215, 100%, 100%, 0.99); color: hsl(215, 70%, 33%); }
+::-moz-selection { background: hsla(215, 100%, 100%, 0.99); color: hsl(215, 70%, 33%); }
 
