@@ -1,0 +1,10 @@
+{
+	"excavator.svg": {
+		"author": "https://thenounproject.com/web.abbys/",
+		"modifications": "Simplified svg for <use>"
+	},
+	"mdn.svg": {
+		"author": "Mozilla Developer Network",
+		"modifications": "Cut out the white invert logo & simplified svg for <use>"
+	}
+}
