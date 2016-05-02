@@ -9,6 +9,7 @@ fetch('webanimations.idl')
 	element.textContent = json;
 	console.log(tree);
 	waapi.idl = tree;
+	waapi.names = tree.map(function(d) { return d.name });
 	validation();
 	overview();
 	preview();
@@ -21,7 +22,11 @@ fetch('webanimations.idl')
 
 
 function preview() {
-	var examples = waapi.idl.reduce(function(p, c) {
+	document.querySelector('details.preview').innerHTML += waapi.idl.map(function(idl) {
+		return idl.type === 'interface'? renderInterface(idl) : '';
+	}).join('');
+	
+	/*var examples = waapi.idl.reduce(function(p, c) {
 		if(c.type && p.length? !p.some(function(d) { return d.type === c.type }) : true)
 			p.push(c);
 		return p;
@@ -37,35 +42,217 @@ function preview() {
 			default: return '';
 		}
 	}).join('')
+	*/
 }
 
 function renderInterface(int) {
-	// return '<code class="block">' + JSON.stringify(int, null, '  ') + '</code>';
-	return
-	'<article class="interface">' +
-		'<header>' + int.name + '</header>' +
-		'<section class="members">' +
-			
-		'</section>' +
-	'</article>'
+	var attributes = [];
+	var events = [];
+	var methods = [];
+	int.members.forEach(function(member) {
+		if(member.type === 'attribute')
+		{
+			if(member.idlType.idlType === 'EventHandler' || member.idlType.generic === 'Promise')
+				events.push(member);
+			else
+				attributes.push(member);
+		}
+		
+		else if(member.type === 'operation')
+		{
+			methods.push(member);
+		}
+	});
+	
+	var inheritance = '';
+	if(int.inheritance)
+	{
+		if(waapi.names.includes(int.inheritance))
+			inheritance = `<span class="inheritance">extends <a class="internal" href="">${int.inheritance}</a></span>`;
+		else
+			inheritance = `<span class="inheritance">extends <a class="mdn" href="https://developer.mozilla.org/en-US/docs/Web/API/${int.inheritance}"><svg class="icon"><use xlink:href="#mdn-icon"/></svg>${int.inheritance}</a></span>`;
+	}
+	
+	return `<article class="interface">
+		<header>
+			<span class="type">interface</span>
+			<span class="name">
+				${int.name}
+				<svg class="underline"><rect/></svg>
+			</span>
+			${inheritance}
+		</header>
+		${renderInterface.withConstructor(int)}
+		${renderInterface.withAttributes(int, attributes)}
+		${renderInterface.withEvents(int, events)}
+		${renderInterface.withMethods(int, methods)}
+	</article>`
+// 	<details><summary>Code</summary><code class="block">${JSON.stringify(int, null, '  ')}</code></details>`;
 }
 
+renderInterface.withConstructor = function(int) {
+	var constructor = int.extAttrs[0] && int.extAttrs[0].name === "Constructor" && int.extAttrs[0];
+	if(!constructor) return '';
+	return `<table class="constructor">
+		<caption>CONSTRUCTOR</caption>
+		<td class="formatted">var foo = new <em>${int.name}</em>(\n${
+			constructor.arguments.map(function(argument) { return '\t' + renderType(argument.idlType) }).join(',\n')
+		}\n);</td>
+	</table>`
+}
+
+renderInterface.withAttributes = function(int, attributes) {
+	if(!attributes.length) return '';
+	/*return `<table class="attributes">
+		<caption>ATTRIBUTES</caption>
+		${attributes.map(function(attribute) {
+			return `<tr>
+				<td class="static">${(attribute.static? 'static' : '')}</td>
+				<td class="readonly">${(attribute.readonly? 'read-only' : '')}</td>
+				<td class="nullable">${(attribute.idlType.nullable? 'nullable' : '')}</td>
+				<td class="type">${renderType(attribute.idlType)}</td>
+				<td class="name">${attribute.name}</td>
+			</tr>`
+		}).join('')}
+	</table>`*/
+	return `<table class="attributes">
+		<caption>ATTRIBUTES</caption>
+		${attributes.map(function(attribute) {
+			return `<tr>
+				<td class="readonly">${attribute.readonly? `<span class="readonly" title="Attribute is read-only; You can't set the value">read</span>` : ''}</td>
+				<td class="formatted">${attribute.static? 'static ' : ''}foo.<em class="name">${attribute.name}</em> = ${renderType(attribute.idlType) + (attribute.idlType.nullable? ' || null' : '')}</td>
+			</tr>`
+		}).join('')}
+	</table>`
+}
+
+renderInterface.withEvents = function(int, events) {
+	if(!events.length) return '';
+	/*return `<table class="events">
+		<caption>EVENTS</caption>
+		${events.map(function(event) {
+			var type = event.idlType.generic === 'Promise'? event.idlType.generic : event.idlType.idlType;
+			return `<tr>
+				<td class="type">${type}</td>
+				<td class="name">${event.name}</td>
+			</tr>`;
+		}).join('')}
+	</table>`*/
+	return `<table class="events">
+		<caption>EVENTS</caption>
+		${events.map(function(event) {
+			var type = event.idlType.generic === 'Promise'? event.idlType.generic : event.idlType.idlType;
+			
+			if(type === 'Promise')
+			{
+				return `<tr>
+					<td class="formatted">foo.<em class="name">${event.name}</em>.then(function(${renderArguments(event.idlType.idlType)}) {})</td>
+				</tr>`;
+			}
+			
+			else if(type === 'EventHandler')
+			{
+				return `<tr>
+					<td class="formatted">foo.<em class="name">${event.name}</em> = function() {}</td>
+				</tr>`;
+			}
+			
+			else
+			{
+				return `<tr>
+					<td class="type">${type}</td>
+					<td class="name">${event.name}</td>
+				</tr>`;
+			}
+		}).join('')}
+	</table>`
+}
+
+renderInterface.withMethods = function(int, methods) {
+	if(!methods.length) return '';
+	return `<table class="methods">
+		<caption>METHODS</caption>
+		${methods.map(function(method) {
+			var type = (method.idlType.idlType !== 'void'? ` <span class="return">returns ${renderType(method.idlType)}</span>` : '');
+			return `<tr>
+				<td class="formatted"><span class="name">foo.<em>${method.name}</em></span><span class="arguments">(${renderArguments(method.arguments)})</span>${type}</td>
+			</tr>`
+		}).join('')}
+	</table>`
+}
+
+
+
+function renderArguments(args) {
+	if(!Array.isArray(args)) return renderArguments([args]);
+	if(args.length === 0) return '';
+	if(args.length === 1)
+	{
+		var argument = args[0];
+		return (argument.optional? 'optional ' : '') + renderType(argument.idlType);
+	}
+	else
+	{
+		return '\n' + args.map(function(argument) {
+			return '\t' + (argument.optional? 'optional ' : '') + renderType(argument.idlType);
+		}).join(',\n') + '\n';
+	}
+}
+
+
+
+
 function renderEnum(enume) {
-	
-	return '<code class="block">' + JSON.stringify(enume, null, '  ') + '</code>';
+	var json = JSON.stringify(enume, null, '  ');
+	return `<code class="block">${json}</code>`;
 }
 
 function renderDictionary(dict) {
-	
 	return '<code class="block">' + JSON.stringify(dict, null, '  ') + '</code>';
 }
 
 function renderImplements(impl) {
-	
 	return '<code class="block">' + JSON.stringify(impl, null, '  ') + '</code>';
 }
 
+function renderType(idlType) {
+	if(typeof idlType === 'string')
+	{
+		idlType = { idlType: idlType };
+	}
 
+	if(Array.isArray(idlType.idlType))
+	{
+		return idlType.idlType.map(renderType).join(' or ');
+	}
+	
+	if(idlType.sequence)
+	{
+		return '<span class="sequence">[' + renderType(idlType.idlType) + ']</span>';
+	}
+	
+	switch(idlType.idlType)
+	{
+		case 'double':
+		case 'unrestricted double':
+			return '<em class="idltype">Number</em>';
+		break;
+		case 'DOMString':
+			return '<em class="idltype">String</em>';
+		break;
+		case 'object':
+			return '<em class="idltype">Object</em>';
+		break;
+		case 'void':
+			return idlType.idlType;
+		break;
+		default:
+			if(waapi.names.includes(idlType.idlType))
+				return `<a class="internal" href="/${idlType.idlType}/">${idlType.idlType}</a>`;
+			else
+				return '<em class="idltype">' + idlType.idlType + '</em>';
+	}
+}
 
 
 
