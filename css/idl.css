@@ -1,5 +1,7 @@
 
-article.interface {
+article.interface,
+article.dictionary,
+article.enum {
 	padding: 20px;
 	margin: 20px;
 	background-image: linear-gradient(hsl(215, 70%, 33%) 2px, transparent 2px),
@@ -12,21 +14,31 @@ article.interface {
 	background-repeat: repeat, repeat, repeat, repeat;
 }
 
-article.interface > header {
+
+
+
+
+header.landmark {
 	margin-bottom: 20px;
 	font: bold 30px/40px Body, sans-serif;
 }
 
-article.interface > header span:not(.name) {
+
+h1.title {
+	margin-bottom: 20px;
+}
+
+
+header.landmark span:not(.name) {
 	color: hsl(215, 50%, 60%);
 }
 
-article.interface > header span.name {
+header.landmark span.name {
 	position: relative;
 	display: inline-block;
 }
 
-article.interface > header span.name svg.underline {
+header.landmark span.name svg.underline {
 	position: absolute;
 	top: 1.2em;
 	left: 0;
@@ -38,18 +50,18 @@ article.interface > header span.name svg.underline {
 	border-bottom: 1px solid white;
 }
 
-article.interface > header span.name svg.underline rect {
+header.landmark span.name svg.underline rect {
 	width: 100%;
 	height: 100%;
 	fill: url("#wall");
 }
 
-article.interface > header span.inheritance em {
+header.landmark span.inheritance em {
 	position: relative;
 	color: hsl(215, 100%, 95%);
 }
 
-article.interface > header span.inheritance em::after {
+header.landmark span.inheritance em::after {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -149,9 +161,19 @@ article.interface a:hover::after {
 
 
 
+article.interface caption {
+	text-align: left;
+	font: 600 17px/20px Body, sans-serif;
+}
+
+article.interface caption span {
+	display: inline-block;
+	border-bottom: 2px solid;
+	margin-bottom: 18px;
+}
 
 
-
+/*
 article.interface h1,
 article.interface caption {
 	position: relative;
@@ -175,10 +197,13 @@ article.interface caption::after {
 	background: linear-gradient(hsla(215, 100%, 100%, 1) 1px, transparent 1px) center no-repeat;
 	background-size: 100% 1px;
 }
+*/
+
 
 
 
 article.interface table {
+	margin-bottom: 40px;
 	font: normal 20px/30px Body, sans-serif;
 }
 
@@ -188,7 +213,7 @@ article.interface td code.block {
 
 
 
-td.formatted {
+.formatted {
 	color: hsl(215, 100%, 90%);
 	font: 18px/20px Code, monospace;
 	-moz-tab-size: 4;
@@ -196,12 +221,12 @@ td.formatted {
 	white-space: pre;
 }
 
-td.formatted em {
+.formatted em {
 	color: hsl(215, 100%, 100%);
 	font-weight: bold;
 }
 
-td.formatted span.sequence {
+.formatted span.sequence {
 	color: hsl(215, 100%, 100%);
 }
 
@@ -243,18 +268,29 @@ article.interface span.readonly {
 	font: 12px/1 Code, monospace;
 }
 
-article.interface span.readonly[title] {
+article.interface span.readonly[title],
+article.interface span.inherited[title] {
 	cursor: help;
+}
+
+
+
+table.inheritance th {
+	text-align: right;
+	padding-right: 10px;
 }
 
 
 
 
 
+
+/*
 table.constructor caption,
 table.attributes caption,
 table.events caption,
 table.methods caption {
+	position: relative;
 	padding-left: 2.0em;
 	padding-right: 0.5em;
 }
@@ -266,8 +302,6 @@ table.methods caption::before {
 	position: absolute;
 	left: 5px;
 	bottom: 25px;
-/* 	vertical-align: 0.2em;
-	margin-right: 0.5em; */
 	font: 12px/1 Code, monospace;
 }
 
@@ -282,3 +316,72 @@ table.events caption::before { content: '.then' }
 
 table.methods {}
 table.methods caption::before { content: 'fn()' }
+*/
+
+
+
+
+
+article.dictionary {}
+
+article.dictionary a.internal::before { content: '‹' }
+article.dictionary a.internal::after { content: '›' }
+
+
+ul.dictionary {}
+
+ul.dictionary::before,
+ul.dictionary::after { color: hsl(215, 30%, 60%) }
+ul.dictionary::before { content: '{' }
+ul.dictionary::after { content: '}' }
+
+ul.dictionary > li { padding-left: 20px }
+
+ul.dictionary > li::before,
+ul.dictionary > li::after {
+	color: hsl(215, 30%, 60%);
+}
+
+ul.dictionary span.idltype,
+ul.dictionary a.internal {
+	color: hsl(215, 30%, 90%);
+}
+
+
+
+
+
+
+article.enum {}
+
+ul.enum {}
+
+ul.enum::before,
+ul.enum::after { color: hsl(215, 30%, 60%) }
+ul.enum::before { content: '[' }
+ul.enum::after { content: ']' }
+
+ul.enum > li { padding-left: 20px }
+
+ul.enum > li::before,
+ul.enum > li::after {
+	color: hsl(215, 30%, 60%);
+}
+ul.enum > li::before { content: '“' }
+ul.enum > li::after { content: '”' }
+ul.enum > li:not(:last-child)::after { content: '”,' }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
