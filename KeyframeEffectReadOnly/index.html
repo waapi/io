@@ -1,46 +1,67 @@
 ---
 layout: article
+
 ---
 <article class="interface">
-		<header>
+	<header class="landmark">
+		<h1 class="title">
 			<span class="type">interface</span>
 			<span class="name">
 				KeyframeEffectReadOnly
-				<svg class="underline"><rect></rect></svg>
+				<svg class="underline"><rect/></svg>
 			</span>
-			<span class="inheritance">extends <a class="internal" href="">AnimationEffectReadOnly</a></span>
-		</header>
-		<table class="constructor">
-		<caption>CONSTRUCTOR</caption>
-		<tbody><tr><td class="formatted">var foo = new <em>KeyframeEffectReadOnly</em>(
+		</h1>
+
+		<div class="formatted">KeyframeEffectReadOnly.prototype » <a class="internal" title="KeyframeEffectReadOnly extends the AnimationEffectReadOnly interface" href="/AnimationEffectReadOnly/">AnimationEffectReadOnly</a></div>
+	
+		<div class="formatted"><a class="internal" title="KeyframeEffect extends the KeyframeEffectReadOnly interface" href="/KeyframeEffect/">KeyframeEffect</a>.prototype » KeyframeEffectReadOnly</div>
+	
+	</header>
+
+	<table class="constructor">
+		<caption><span>CONSTRUCTOR</span></caption>
+		<td class="formatted">var foo = new <em>KeyframeEffectReadOnly</em>(
 	<a class="internal" href="/Animatable/">Animatable</a>,
 	<em class="idltype">Object</em>,
 	<em class="idltype">Number</em> or <a class="internal" href="/KeyframeEffectOptions/">KeyframeEffectOptions</a>
 );</td>
-	</tr></tbody></table>
-		<table class="attributes">
-		<caption>ATTRIBUTES</caption>
-		<tbody><tr>
-				<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
-				<td class="formatted">foo.<em class="name">target</em> = <a class="internal" href="/Animatable/">Animatable</a> || null</td>
-			</tr><tr>
-				<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
-				<td class="formatted">foo.<em class="name">iterationComposite</em> = <a class="internal" href="/IterationCompositeOperation/">IterationCompositeOperation</a></td>
-			</tr><tr>
-				<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
-				<td class="formatted">foo.<em class="name">composite</em> = <a class="internal" href="/CompositeOperation/">CompositeOperation</a></td>
-			</tr><tr>
-				<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
-				<td class="formatted">foo.<em class="name">spacing</em> = <em class="idltype">String</em></td>
-			</tr>
-	</tbody></table>
-		
-		<table class="methods">
-		<caption>METHODS</caption>
-		<tbody><tr>
-				<td class="formatted"><span class="name">foo.<em>clone</em></span><span class="arguments">()</span> <span class="return">returns <a class="internal" href="/KeyframeEffect/">KeyframeEffect</a></span></td>
-			</tr><tr>
-				<td class="formatted"><span class="name">foo.<em>getFrames</em></span><span class="arguments">()</span> <span class="return">returns <span class="sequence">[<em class="idltype">Object</em>]</span></span></td>
-			</tr>
-	</tbody></table>
-	</article>
+	</table>
+
+	<table class="attributes">
+		<caption><span>ATTRIBUTES</span></caption>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+		<td class="formatted">foo.<em class="name">target</em> = <a class="internal" href="/Animatable/">Animatable</a> || null</td>
+		</tr>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+		<td class="formatted">foo.<em class="name">iterationComposite</em> = <a class="internal" href="/IterationCompositeOperation/">IterationCompositeOperation</a></td>
+		</tr>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+		<td class="formatted">foo.<em class="name">composite</em> = <a class="internal" href="/CompositeOperation/">CompositeOperation</a></td>
+		</tr>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+		<td class="formatted">foo.<em class="name">spacing</em> = <em class="idltype">String</em></td>
+		</tr>
+		<tr>
+			<td class="readonly"><span class="readonly" title="Attribute is read-only; You can't set the value">read</span></td>
+		<td class="formatted">foo.<em class="name">timing</em> = <a class="internal" href="/AnimationEffectTimingReadOnly/">AnimationEffectTimingReadOnly</a>	<span class="inherited" title="This attribute is inherited via prototype from AnimationEffectReadOnly">« AnimationEffectReadOnly</span></td>
+		</tr>
+	</table>
+
+
+	<table class="methods">
+		<caption><span>METHODS</span></caption>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>clone</em></span><span class="arguments">()</span> <span class="return">returns <a class="internal" href="/KeyframeEffect/">KeyframeEffect</a></span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>getFrames</em></span><span class="arguments">()</span> <span class="return">returns <span class="sequence">[<em class="idltype">Object</em>]</span></span></td>
+		</tr>
+		<tr>
+			<td class="formatted"><span class="name">foo.<em>getComputedTiming</em></span><span class="arguments">()</span> <span class="return">returns <a class="internal" href="/ComputedTimingProperties/">ComputedTimingProperties</a></span>	<span class="inherited" title="This method is inherited via prototype from AnimationEffectReadOnly">« AnimationEffectReadOnly</span></td>
+		</tr>
+	</table>
+</article>
