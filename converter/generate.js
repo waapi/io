@@ -1,48 +1,69 @@
-var waapi = {};
+/// Dependencies
+require('colors');
+require('./poly.js');
+var fs = require('fs');
+var path = require('path');
+var rimraf = require('rimraf');
+var waapi = require('./waapi.js');
+var render = require('./render.js');
 
-fetch('webanimations.idl')
-.then(function(response) { return response.text() })
-.then(function(idl) {
-	var element = document.querySelector('code.json');
-	var tree = WebIDL2.parse(idl);
-	var json = JSON.stringify(tree, null, '    ');
-	element.textContent = json;
+
+
+
+
+/// Write out a JSON for debuggage and other tools & w/e
+var json = JSON.stringify(waapi, null, '\t');
+fs.writeFileSync('./webanimations.json', json);
+
+
+
+
+
+/// Global Paths
+var paths = {
+	build: '../'
+};
+
+
+
+
+
+/// Clean up old build folder if exists
+// try {
+// 	rimraf.sync(paths.build);
+// 	console.log('Build folder already exists, cleaning up!');
+// }
+// catch(e) {
+// 	console.log('No build folder exists', e);
+// }
+
+/// Create new clean build folder
+// console.log(`Creating new build folder: ${paths.build}`);
+// fs.mkdirSync(paths.build);
+
+
+
+/// Loop through all objects
+console.log('Rendering WebIDL to Jekyll pages');
+waapi.idl.forEach((idl) => {
 	
-	waapi.idl = tree;
-	waapi.names = tree.filter(function(d) { return d.name }).map(function(d) { return d.name });
-	waapi.map = tree.reduce(function(p, c) {
-		if(c.name) p[c.name] = c;
-		return p;
-	}, {});
+	/// Does it have name to go by?
+	if(!('name' in idl && typeof idl.name === 'string' && idl.name))
+		return; // skip
 	
-	function inherit(node) {
-		var parent = node.inheritance && waapi.map[node.inheritance];
-		if(parent) inherit(parent); else return;
-		
-		if('members' in node && 'members' in parent)
-		{
-			parent.members.forEach(function(a) {
-				if(node.members.some(function(b) { return a.name === b.name })) return;
-				
-				var clone = Object.assign({ inheritance: parent.name }, a);
-				node.members.push(clone);
-			});
-		}
-		
-// 		console.log({ node: node, parent: parent });
-		
+	/// For each IDL object create its' own folder (if it doesn't exist already)
+	console.log('• '.green, idl.name.bold);
+	var folder = path.join(paths.build, idl.name);
+	try {
+		fs.mkdirSync(folder);
+	} catch(e) {
+		// Already exists
 	}
-
-	tree.forEach(function(d) {
-		if(d.inheritance)
-			inherit(d);
-	});
 	
-	
-	
-	validation();
-	overview();
-	preview();
+	/// Render out an article
+	var article = render(idl);
+	var index = path.join(folder, 'index.html');
+	fs.writeFileSync(index, article);
 });
 
 
@@ -51,28 +72,37 @@ fetch('webanimations.idl')
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 function preview() {
 	document.querySelector('details.preview').innerHTML += waapi.idl.map(function(idl) {
-		if(idl.type === 'interface') renderInterface(idl);
+		return idl.type === 'interface'? renderInterface(idl) : '';
 	}).join('');
-	
-	/*var examples = waapi.idl.reduce(function(p, c) {
-		if(c.type && p.length? !p.some(function(d) { return d.type === c.type }) : true)
-			p.push(c);
-		return p;
-	}, []);
-	
-	document.querySelector('details.preview').innerHTML
-	+= examples.map(function(example) {
-		switch(example.type) {
-			case 'interface': return renderInterface(example);
-			case 'enum': return renderEnum(example);
-			case 'dictionary': return renderDictionary(example);
-			case 'implements': return renderImplements(example);
-			default: return '';
-		}
-	}).join('')
-	*/
 }
 
 function renderInterface(int) {
@@ -133,18 +163,6 @@ renderInterface.withConstructor = function(int) {
 
 renderInterface.withAttributes = function(int, attributes) {
 	if(!attributes.length) return '';
-	/*return `<table class="attributes">
-		<caption><span>ATTRIBUTES</span></caption>
-		${attributes.map(function(attribute) {
-			return `<tr>
-				<td class="static">${(attribute.static? 'static' : '')}</td>
-				<td class="readonly">${(attribute.readonly? 'read-only' : '')}</td>
-				<td class="nullable">${(attribute.idlType.nullable? 'nullable' : '')}</td>
-				<td class="type">${renderType(attribute.idlType)}</td>
-				<td class="name">${attribute.name}</td>
-			</tr>`
-		}).join('')}
-	</table>`*/
 	return `<table class="attributes">
 		<caption><span>ATTRIBUTES</span></caption>
 		${attributes.map(function(attribute) {
@@ -158,16 +176,6 @@ renderInterface.withAttributes = function(int, attributes) {
 
 renderInterface.withEvents = function(int, events) {
 	if(!events.length) return '';
-	/*return `<table class="events">
-		<caption><span>EVENTS</span></caption>
-		${events.map(function(event) {
-			var type = event.idlType.generic === 'Promise'? event.idlType.generic : event.idlType.idlType;
-			return `<tr>
-				<td class="type">${type}</td>
-				<td class="name">${event.name}</td>
-			</tr>`;
-		}).join('')}
-	</table>`*/
 	return `<table class="events">
 		<caption><span>EVENTS</span></caption>
 		${events.map(function(event) {
@@ -408,3 +416,7 @@ function validation() {
 			return '<li class="removed">' + type + '</li>';
 		}).join('') + '</ul>';
 }
+
+
+
+*/
