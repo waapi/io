@@ -1,9 +1,12 @@
-var fs = require('fs');
-var WebIDL2 = require('./webidl2.js');
+if(typeof require === 'function')
+{
+	var fs = require('fs');
+	var WebIDL2 = require('./webidl2.js');
+	var idl = fs.readFileSync('./webanimations.idl', { encoding: 'utf8'});
+}
 
 
 /// Parse WebIDL of the Web Animations spec
-var idl = fs.readFileSync('./webanimations.idl', { encoding: 'utf8'});
 var tree = WebIDL2.parse(idl);
 var json = JSON.stringify(tree, null, '    ');
 
@@ -43,4 +46,8 @@ tree.forEach(function(d) {
 });
 
 
-module.exports = waapi;
+
+if(module && module.exports)
+{
+	module.exports = waapi;
+}

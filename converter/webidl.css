@@ -79,16 +79,18 @@ details.validator ul.interfaces::before { content: 'Interfaces' }
 details.validator ul.types::before { content: 'Types' }
 
 details.validator ul:empty::after {
-	content: "It's all good";
-	display: block;
-	width: 130px;
+	content: "It's all good, the same as I last remember";
+	display: inline-block;
+	width: auto;
 	border-radius: 20px;
-	padding: 2px 5px 4px;
+	padding: 2px 25px 4px;
 	margin-left: 15px;
-	background: hsl(120, 80%, 45%);
+	border: 2px solid currentColor;
+	box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.2), inset 0 0 0 1px hsla(0, 0%, 0%, 0.2);
 	text-align: center;
-	color: white;
-	font: 16px Body, sans-serif;
+	color: hsl(120, 100%, 50%);
+	font: bold 16px Body, sans-serif;
+	text-shadow: 0 1px hsla(0, 0%, 0%, 0.2), 0 -1px hsla(0, 0%, 0%, 0.2), 1px 0 hsla(0, 0%, 0%, 0.2), -1px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 details.validator li {
@@ -173,10 +175,3 @@ code.block {
 	vertical-align: top;
 	white-space: pre;
 }
-
-
-
-
-
-
-

@@ -1,11 +1,18 @@
-var YAML = require('js-yaml');
-var waapi = require('./waapi.js');
+if(typeof require === 'function')
+{
+	var YAML = require('js-yaml');
+	var waapi = require('./waapi.js');
+}
+else
+{
+	var YAML = null;
+}
 
 
 function render(idl) {
-	var frontmatter = YAML.dump({
+	var frontmatter = YAML? `---\n${YAML.dump({
 		layout: 'article'
-	});
+	})}\n---\n` : '';
 	
 	var content;
 	if(idl.type === 'interface') content = renderInterface(idl);
@@ -13,7 +20,7 @@ function render(idl) {
 	else if(idl.type === 'enum') content = renderEnum(idl);
 	else content = `<!-- UNHANDLED IDL TYPE: ${idl.type} -->`;
 	
-	return `---\n${frontmatter}\n---\n${content}`;
+	return `${frontmatter}${content}`;
 }
 
 
@@ -350,5 +357,7 @@ function renderType(idlType, tag) {
 }
 
 
-
-module.exports = render;
+if(typeof module !== 'undefined')
+{
+	module.exports = render;
+}
