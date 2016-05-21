@@ -1,4 +1,4 @@
-
+article.index,
 article.interface,
 article.dictionary,
 article.enum {
@@ -9,8 +9,6 @@ article.enum {
 	                  linear-gradient(hsl(215, 70%, 33%) 1px, transparent 1px),
 	                  linear-gradient(90deg, hsl(215, 70%, 33%) 1px, transparent 1px);
 	background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-/* 	background-position: -2px -82px, -82px -2px, -1px -1px, -1px -1px; */
-/* 	background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px; */
 	background-repeat: repeat, repeat, repeat, repeat;
 }
 
@@ -80,6 +78,65 @@ header.landmark span.inheritance em::after {
 
 
 
+
+article.index h2 {
+	margin-top: 60px;
+}
+
+article.index h2::after {
+	content: '.js';
+	color: hsl(215, 30%, 60%);
+}
+
+
+ul.index {
+	margin: 10px 0;
+}
+
+ul.index li {
+	padding-left: 0;
+}
+
+ul.index a {
+/* 	padding: 10px 20px; */
+}
+
+
+
+
+
+ul.interface {}
+
+ul.interface::before,
+ul.interface::after { color: hsl(215, 30%, 60%) }
+
+ul.interface::before {
+	content: '// Hello World'
+}
+
+ul.interface > li {  }
+
+ul.interface > li::before { content: 'new ' }
+ul.interface > li::after { content: '();' }
+
+ul.interface > li::before,
+ul.interface > li::after {
+	color: hsl(215, 30%, 60%);
+}
+
+ul.interface span.idltype,
+ul.interface a.internal {
+	color: hsl(215, 30%, 90%);
+}
+
+
+
+
+
+
+
+
+
 article.interface a {
 	padding: 0 0.1em;
 	color: hsl(270, 50%, 100%);
@@ -92,72 +149,22 @@ article.interface a svg.icon {
 	margin-right: 0.1em;
 }
 
+
+article.index a.internal::before,
 article.interface a.internal::before { content: '‹' }
+article.index a.internal::after,
 article.interface a.internal::after { content: '›' }
 
-/* article.interface a::after {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	content: '';
-	height: 1px;
-	border-radius: 3px;
-	background: currentColor;
-}
 
-article.interface a:hover::after {
-	display: none;
-} */
+article.index a.inline,
+article.interface a.inline { color: hsl(215, 70%, 90%); text-decoration: underline }
 
+article.index a:hover,
 article.interface a:hover {
 	border-radius: 3px;
 	background: hsl(215, 100%, 100%);
 	color: hsl(215, 70%, 33%);
 }
-
-
-
-
-/*article.interface a::after {
-	position: absolute;
-	top: 95%;
-	left: -4px;
-	right: -4px;
-	bottom: -4px;
-	content: '';
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-	background-image: linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
-	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
-	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0);
-	background-repeat: repeat-x, no-repeat, no-repeat;
-	background-size: 9px 1px;
-	background-position: bottom, left bottom, right bottom;
-	transition: all 200ms;
-}
-
-article.interface a:hover::after {
-	position: absolute;
-	top: 0;
-	left: -4px;
-	right: -4px;
-	bottom: -4px;
-	content: '';
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-	background-color: hsla(215, 100%, 100%, 0.1);
-	background-image: linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
-	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
-	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0),
-	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 5px, transparent 5px),
-	                  linear-gradient(90deg, hsla(215, 100%, 100%, 1) 10px, transparent 0),
-	                  linear-gradient(90deg, transparent 0, hsla(215, 100%, 100%, 1) 0);
-	background-repeat: repeat-x, no-repeat, no-repeat, repeat-x, no-repeat, no-repeat;
-	background-size: 9px 1px;
-	background-position: bottom, left bottom, right bottom, top, left top, right top;
-}*/
-
 
 
 
@@ -171,34 +178,6 @@ article.interface caption span {
 	border-bottom: 2px solid;
 	margin-bottom: 18px;
 }
-
-
-/*
-article.interface h1,
-article.interface caption {
-	position: relative;
-	padding: 0 0 20px;
-	margin: 20px 0 0;
-	text-align: center;
-	font: 600 17px/20px Body, sans-serif;
-}
-
-article.interface h1::after,
-article.interface caption::after {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 16px;
-	display: block;
-	content: '';
-	height: 7px;
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-	background: linear-gradient(hsla(215, 100%, 100%, 1) 1px, transparent 1px) center no-repeat;
-	background-size: 100% 1px;
-}
-*/
-
 
 
 
@@ -283,45 +262,6 @@ table.inheritance th {
 
 
 
-
-
-/*
-table.constructor caption,
-table.attributes caption,
-table.events caption,
-table.methods caption {
-	position: relative;
-	padding-left: 2.0em;
-	padding-right: 0.5em;
-}
-
-table.constructor caption::before,
-table.attributes caption::before,
-table.events caption::before,
-table.methods caption::before {
-	position: absolute;
-	left: 5px;
-	bottom: 25px;
-	font: 12px/1 Code, monospace;
-}
-
-table.constructor {}
-table.constructor caption::before { content: 'new' }
-
-table.attributes {}
-table.attributes caption::before { content: '.baz' }
-
-table.events {}
-table.events caption::before { content: '.then' }
-
-table.methods {}
-table.methods caption::before { content: 'fn()' }
-*/
-
-
-
-
-
 article.dictionary {}
 
 article.dictionary a.internal::before { content: '‹' }
@@ -341,6 +281,8 @@ ul.dictionary > li::before,
 ul.dictionary > li::after {
 	color: hsl(215, 30%, 60%);
 }
+
+ul.dictionary > li:not(:last-child)::after { content: ',' }
 
 ul.dictionary span.idltype,
 ul.dictionary a.internal {
@@ -370,18 +312,3 @@ ul.enum > li::after {
 ul.enum > li::before { content: '“' }
 ul.enum > li::after { content: '”' }
 ul.enum > li:not(:last-child)::after { content: '”,' }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

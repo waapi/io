@@ -10,19 +10,21 @@ var render = require('./render.js');
 
 
 
-
-/// Write out a JSON for debuggage and other tools & w/e
-var json = JSON.stringify(waapi, null, '\t');
-fs.writeFileSync('./webanimations.json', json);
-
-
-
-
-
 /// Global Paths
 var paths = {
-	build: '../'
+	converter: __dirname + '/',
+	build: __dirname + '/../'
 };
+
+
+
+
+/// Write out a JSON for debuggage and other tools & w/e
+var json = JSON.stringify(waapi.idl, null, '\t');
+fs.writeFileSync(paths.converter + 'webanimations.json', json);
+fs.writeFileSync(paths.converter + 'webanimations.json.js', `var waapi = {}; waapi.idl = ${json};`);
+
+
 
 
 

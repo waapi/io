@@ -1,0 +1,105 @@
+
+form.search {
+	position: relative;
+	height: 50px;
+}
+
+input#search {
+	box-sizing: border-box;
+	width: 100%;
+	height: 50px;
+	padding: 0 5.5em 0 1em;
+	border: none;
+	outline: none;
+	background: none;
+	color: hsl(215, 50%, 60%);
+	transition: color 70ms;
+}
+
+input#search:focus {
+	color: white;
+}
+
+input#search::-webkit-input-placeholder {
+	color: hsl(215, 50%, 50%);
+}
+
+input#search:focus::-webkit-input-placeholder {
+	visibility: hidden;
+}
+
+
+input#search:hover + label.search {
+	border-color: hsl(215, 50%, 70%);
+}
+
+input#search:focus + label.search {
+	border-color: hsl(215, 50%, 100%);
+}
+
+input#search:empty + label.search {
+	background: hsl(215, 70%, 35%);
+}
+
+label.search {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	z-index: -1;
+	padding: 2px 10px;
+	border: 1px solid hsl(215, 50%, 60%);
+	text-align: right;
+	cursor: text;
+	-webkit-user-select: none;
+	pointer-events: none;
+}
+
+ul.results {
+	position: absolute;
+	top: 100%;
+	left: 10px;
+	right: 10px;
+	z-index: 1;
+	margin-top: -10px;
+	box-shadow: 0 3px 6px 2px hsla(215, 0%, 0%, 0.05);
+	background: hsl(215, 70%, 35%);
+	font: 20px/30px Code, monospace;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	white-space: pre;
+}
+
+ul.results .secondary .name {
+	position: relative;
+	visibility: hidden;
+}
+
+ul.results .secondary .name::after {
+	position: absolute;
+	right: .1em;
+	content: '›';
+	opacity: 0.2;
+	visibility: initial;
+}
+
+
+
+ul.results a {
+	display: block;
+	padding: 0 0.4em;
+	outline: none;
+}
+
+ul.results a:focus,
+ul.results:not(.in-focus) a:hover {
+	background: hsl(215, 70%, 30%);
+}
+
+
+
+html.no-search form.search { display: none }
+html.in-search nav.global ~ *,
+html.in-search main > details:not(.search) { opacity: 0.1; pointer-events: none; }
+html:not(.in-search) ul.results { opacity: 0; pointer-events: none; }

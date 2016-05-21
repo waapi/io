@@ -2,25 +2,72 @@ if(typeof require === 'function')
 {
 	var fs = require('fs');
 	var WebIDL2 = require('./webidl2.js');
-	var idl = fs.readFileSync('./webanimations.idl', { encoding: 'utf8'});
+	var idl = fs.readFileSync(__dirname + '/webanimations.idl', { encoding: 'utf8'});
+}
+
+if(typeof idl !== 'undefined' && WebIDL2)
+{
+	/// Parse WebIDL of the Web Animations spec
+	var tree = WebIDL2.parse(idl);
 }
 
 
-/// Parse WebIDL of the Web Animations spec
-var tree = WebIDL2.parse(idl);
-var json = JSON.stringify(tree, null, '    ');
-
-
-
-
 /// Create our own abstract tree
-var waapi = {};
-waapi.idl = tree;
-waapi.names = tree.filter(function(d) { return d.name }).map(function(d) { return d.name });
-waapi.map = tree.reduce(function(p, c) {
+if(typeof waapi === 'undefined')
+{
+	var waapi = {};
+	waapi.idl = tree;
+}
+
+waapi.names = waapi.idl.filter(function(d) { return d.name }).map(function(d) { return d.name });
+waapi.map = waapi.idl.reduce(function(p, c) {
 	if(c.name) p[c.name] = c;
 	return p;
 }, {});
+
+waapi.index = waapi.idl.reduce((p, int) => {
+	if(int.type === 'interface')
+	{
+		var simple = { name: int.name, type: int.type };
+		int.members.forEach(function(member) {
+			if(member.type === 'attribute')
+			{
+				if(member.idlType.idlType === 'EventHandler' || member.idlType.generic === 'Promise')
+				{
+					if(!('events' in simple)) simple.events = [];
+					simple.events.push(member.name);
+				}
+				else
+				{
+					if(!('attributes' in simple)) simple.attributes = [];
+					simple.attributes.push(member.name);
+				}
+			}
+			
+			else if(member.type === 'operation')
+			{
+				if(!('methods' in simple)) simple.methods = [];
+				simple.methods.push(member.name);
+			}
+		});
+		p.push(simple);
+	}
+	
+	else if(int.type === 'dictionary')
+	{
+		var simple = { name: int.name, type: int.type, fields: [] };
+		simple.fields = int.members.filter((member) => member.type === 'field').map((member) => member.name);
+		p.push(simple);
+	}
+	
+	else if(int.type === 'enum')
+	{
+		var simple = { name: int.name, type: int.type, values: int.values };
+		p.push(simple);
+	}
+	
+	return p;
+}, []);
 
 
 
@@ -40,14 +87,14 @@ function inherit(node) {
 	}
 }
 
-tree.forEach(function(d) {
+waapi.idl.forEach(function(d) {
 	if(d.inheritance)
 		inherit(d);
 });
 
 
 
-if(module && module.exports)
+if(typeof module !== 'undefined')
 {
 	module.exports = waapi;
 }

@@ -1,45 +1,7 @@
-var waapi = {};
 
-fetch('webanimations.idl')
-.then(function(response) { return response.text() })
-.then(function(idl) {
-	var element = document.querySelector('code.json');
-	var tree = WebIDL2.parse(idl);
-	var json = JSON.stringify(tree, null, '    ');
-	element.textContent = json;
-	
-	waapi.idl = tree;
-	waapi.names = tree.filter(function(d) { return d.name }).map(function(d) { return d.name });
-	waapi.map = tree.reduce(function(p, c) {
-		if(c.name) p[c.name] = c;
-		return p;
-	}, {});
-	
-	function inherit(node) {
-		var parent = node.inheritance && waapi.map[node.inheritance];
-		if(parent) inherit(parent); else return;
-		
-		if('members' in node && 'members' in parent)
-		{
-			parent.members.forEach(function(a) {
-				if(node.members.some(function(b) { return a.name === b.name })) return;
-				
-				var clone = Object.assign({ inheritance: parent.name }, a);
-				node.members.push(clone);
-			});
-		}
-		
-// 		console.log({ node: node, parent: parent });
-		
-	}
 
-	tree.forEach(function(d) {
-		if(d.inheritance)
-			inherit(d);
-	});
-	
-	
-	
+document.addEventListener('DOMContentLoaded', function() {
+	raw();
 	validation();
 	overview();
 	preview();
@@ -47,14 +9,17 @@ fetch('webanimations.idl')
 
 
 
-
+function raw() {
+	var element = document.querySelector('code.json');
+	var json = JSON.stringify(waapi.idl, null, '    ');
+	element.textContent = json;
+}
 
 
 
 function preview() {
 	document.querySelector('details.preview').innerHTML += waapi.idl.map(render).join('');
 }
-
 
 
 

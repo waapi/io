@@ -11,7 +11,10 @@ else
 
 function render(idl) {
 	var frontmatter = YAML? `---\n${YAML.dump({
-		layout: 'article'
+		layout: 'article',
+		article: true,
+		categories: [idl.type],
+		title: idl.name
 	})}\n---\n` : '';
 	
 	var content;
@@ -250,7 +253,7 @@ renderInterface.withEvents = function(int, events) {
 			{
 				return `
 		<tr>
-			<td class="formatted">foo.<em class="name">${event.name}</em> = function() {}</td>
+			<td class="formatted">foo.<em class="name">${event.name}</em> = function(event) {}</td>
 		</tr>`;
 			}
 			

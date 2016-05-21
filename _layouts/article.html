@@ -31,7 +31,16 @@
 	</style>
 	<link rel="stylesheet" href="/css/unstyle.css">
 	<link rel="stylesheet" href="/css/idl.css">
+	<link rel="stylesheet" href="/css/search.css">
 	<link rel="stylesheet" href="/css/article.css">
+
+
+
+	<!-- Scripts -->
+	<script src="/js/poly.js"></script>
+	<script src="/converter/webanimations.json.js"></script>
+	<script src="/converter/waapi.js"></script>
+	<script src="/converter/search.js"></script>
 
 
 
@@ -60,5 +69,18 @@
 			</symbol>
 		</defs>
 	</svg>
-	<nav class="global"></nav>
+	<nav class="global">
+		<h1 class="logo"><a href="/"><span class="cube">WAAPI</span> i<span class="slash">/<svg class="slash"><rect/></svg></span>o</a></h1>
+		<form class="search">
+			<input id="search" type="search" autocomplete="search" inputmode="latin" placeholder="foo.bar">
+			<label class="search" for="search">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="height: 1em; vertical-align: middle;">
+					<path fill="currentColor" d="M100.2 91.3L65 56.5c4.2-5.8 6.6-13 6.6-20.7C71.6 16 55.6 0 35.8 0 16 0 0 16 0 35.8c0 19.8 16 35.8 35.8 35.8 8.2 0 15.7-2.7 21.7-7.3l35 34.7 7.7-7.7zM35.8 61.6C21.6 61.6 10 50 10 35.8 10 21.6 21.7 10 36 10c14 0 25.6 11.7 25.6 26 0 14-11.6 25.6-25.8 25.6z"/>
+				</svg>
+				Search
+			</label>
+			<style class="search"></style>
+			<ul class="results"></ul>
+		</form>
+	</nav>
 	{{content}}

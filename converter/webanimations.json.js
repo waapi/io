@@ -1,4 +1,4 @@
-[
+var waapi = {}; waapi.idl = [
 	{
 		"type": "interface",
 		"name": "AnimationTimeline",
@@ -2748,4 +2748,4 @@
 		"inheritance": "EventInit",
 		"extAttrs": []
 	}
-]
+];
