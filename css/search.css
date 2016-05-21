@@ -102,4 +102,4 @@ ul.results:not(.in-focus) a:hover {
 html.no-search form.search { display: none }
 html.in-search nav.global ~ *,
 html.in-search main > details:not(.search) { opacity: 0.1; pointer-events: none; }
-html:not(.in-search) ul.results { opacity: 0; pointer-events: none; }
+/* html:not(.in-search) ul.results { opacity: 0; pointer-events: none; } */

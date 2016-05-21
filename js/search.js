@@ -12,6 +12,18 @@ function Search() {
 		event.preventDefault();
 	});
 	
+	if(HTMLElement.prototype.closest)
+	{
+		document.addEventListener('click', function(event) {
+			if(!event.target.closest('form.search'))
+			{
+				input.value = '';
+				style.textContent = 'form.search ul.results li { display: none }';
+				document.documentElement.classList.remove('in-search');
+			}
+		});
+	}
+	
 	document.addEventListener('keydown', function(event) {
 		if(!event.defaultPrevented
 		&& (event.key === 'f' || event.keyCode === 70)
@@ -135,7 +147,6 @@ function Search() {
 			
 			li.dataset.secondary = int.values.map(function(entry) { return entry.toLowerCase() }).join(' ');
 		}
-		
 	});
 	
 	document.documentElement.classList.remove('no-search');
