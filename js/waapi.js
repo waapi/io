@@ -25,7 +25,7 @@ waapi.map = waapi.idl.reduce(function(p, c) {
 	return p;
 }, {});
 
-waapi.index = waapi.idl.reduce((p, int) => {
+waapi.index = waapi.idl.reduce(function(p, int) {
 	if(int.type === 'interface')
 	{
 		var simple = { name: int.name, type: int.type };
@@ -56,7 +56,7 @@ waapi.index = waapi.idl.reduce((p, int) => {
 	else if(int.type === 'dictionary')
 	{
 		var simple = { name: int.name, type: int.type, fields: [] };
-		simple.fields = int.members.filter((member) => member.type === 'field').map((member) => member.name);
+		simple.fields = int.members.filter(function(member) { return member.type === 'field' }).map(function(member) { return member.name });
 		p.push(simple);
 	}
 	
