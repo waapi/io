@@ -1,7 +1,7 @@
 if(typeof require === 'function')
 {
 	var YAML = require('js-yaml');
-	var waapi = require('./waapi.js');
+	var waapi = require('../js/waapi.js');
 }
 else
 {

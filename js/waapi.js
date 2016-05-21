@@ -1,8 +1,8 @@
 if(typeof require === 'function')
 {
 	var fs = require('fs');
-	var WebIDL2 = require('./webidl2.js');
-	var idl = fs.readFileSync(__dirname + '/webanimations.idl', { encoding: 'utf8'});
+	var WebIDL2 = require('../converter/webidl2.js');
+	var idl = fs.readFileSync(__dirname + '/../converter/webanimations.idl', { encoding: 'utf8'});
 }
 
 if(typeof idl !== 'undefined' && WebIDL2)

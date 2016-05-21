@@ -63,8 +63,8 @@ svg.slash {
 	height: 3px;
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
-
-	transform: translate(-50%, -50%) rotate(-70deg)
+	-webkit-transform: translate(-50%, -50%) rotate(-70deg);
+	transform: translate(-50%, -50%) rotate(-70deg);
 }
 
 svg.slash rect {

@@ -4,7 +4,7 @@ require('./poly.js');
 var fs = require('fs');
 var path = require('path');
 var rimraf = require('rimraf');
-var waapi = require('./waapi.js');
+var waapi = require('../js/waapi.js');
 var render = require('./render.js');
 
 
@@ -22,7 +22,7 @@ var paths = {
 /// Write out a JSON for debuggage and other tools & w/e
 var json = JSON.stringify(waapi.idl, null, '\t');
 fs.writeFileSync(paths.converter + 'webanimations.json', json);
-fs.writeFileSync(paths.converter + 'webanimations.json.js', `var waapi = {}; waapi.idl = ${json};`);
+fs.writeFileSync(paths.build + 'js/webanimations.json.js', `var waapi = {}; waapi.idl = ${json};`);
 
 
 

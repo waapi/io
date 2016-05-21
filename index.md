@@ -13,13 +13,13 @@ layout: article
 		</h1>
 	</header>
 	<p>
-		This is the technical reference for the Web Animations API
+		This is the technical reference for the Web Animations API.
 	</p>
 	<p>
-		The github repo is located at: <a class="inline" href="https://github.com/waapi/io">https://github.com/waapi/io</a>
+		The site uses automatic document generation from the WebIDL in the specification.
 	</p>
 	<p>
-		The site uses automatic document generation from the WebIDL in the specification, <a class="inline" href="/converter/webidl.html">sneak peek of the internals available here</a>
+		The git repository for this site is located at: <a class="inline" href="https://github.com/waapi/io">https://github.com/waapi/io</a>
 	</p>
 	
 	
