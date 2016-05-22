@@ -99,11 +99,22 @@ article.index h2::after {
 	tab-size: 4;
 }
 
+/* Comment-like */
+article.index h2::before { content: '/// ' }
+
+/* Fancy */
 article.index h2::before { content: '/*\A  * ' }
 article.index h2::after { content: '\A  */' }
 
+/* Fancy! */
 article.index h2::before { content: '/*------------------------------------------------------------------------*\\\A\9' }
 article.index h2::after { content: '\A */' }
+
+
+article.index > p {
+	margin-bottom: 20px;
+	font: normal 20px/30px Body, sans-serif;
+}
 
 ul.index {
 	margin: 10px 0;

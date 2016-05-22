@@ -21,6 +21,9 @@ layout: article
 	<p>
 		The git repository for this site is located at: <a class="inline" href="https://github.com/waapi/io">https://github.com/waapi/io</a>
 	</p>
+	<p>
+		Part of the <A href="http://waapi.org">WAAPI.org</a> network of sites.
+	</p>
 	
 	
 	{% for cat in site.articles %}
