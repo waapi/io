@@ -51,7 +51,6 @@ header.landmark span.name svg.underline {
 header.landmark span.name svg.underline rect {
 	width: 100%;
 	height: 100%;
-	fill: url("#wall");
 }
 
 header.landmark span.inheritance em {
@@ -94,7 +93,7 @@ ul.index {
 }
 
 ul.index li {
-	padding-left: 0;
+	padding: 2px 0;
 }
 
 ul.index a {

@@ -40,7 +40,7 @@ function renderDictionary(int) {
 				<span class="type">dictionary</span>
 				<span class="name">
 					${int.name}
-					<svg class="underline"><rect/></svg>
+					<svg class="underline"><rect fill="url('#wall')"/></svg>
 				</span>
 			</h1>
 		</header>
@@ -70,7 +70,7 @@ function renderEnum(int) {
 				<span class="type">enum</span>
 				<span class="name">
 					${int.name}
-					<svg class="underline"><rect/></svg>
+					<svg class="underline"><rect fill="url('#wall')"/></svg>
 				</span>
 			</h1>
 		</header>
@@ -119,7 +119,7 @@ function renderInterface(int) {
 			<span class="type">interface</span>
 			<span class="name">
 				${int.name}
-				<svg class="underline"><rect/></svg>
+				<svg class="underline"><rect fill="url('#wall')"/></svg>
 			</span>
 		</h1>
 ${renderInterface.withInheritance(int)}

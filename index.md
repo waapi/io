@@ -8,7 +8,7 @@ layout: article
 			<span class="type">reference</span>
 			<span class="name">
 				WAAPI.io
-				<svg class="underline"><rect/></svg>
+				<svg class="underline"><rect fill="url('#wall')"/></svg>
 			</span>
 		</h1>
 	</header>
@@ -30,7 +30,7 @@ layout: article
 			%}{% if page.article == true
 				%}{% for pc in page.categories
 					%}{% if pc == cat
-		%}<li><a href="{{ page.url }}">{{ page.title }}</a></li>{%
+		%}<li><a class="inline" href="{{ page.url }}">{{ page.title }}</a></li>{%
 					endif
 				%}{% endfor
 			%}{% endif
