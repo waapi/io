@@ -54,7 +54,7 @@ renderDictionary.withFields = function(int, fields) {
 		${fields.map((field, index) => {
 			var required = field.required? `<span class="required" title="Field is required">required</span> ` : '';
 			var type = renderType(field.idlType, 'span');
-			return `<li class="formatted"><em class="name">${field.name}</em>: ${required}${type}${index < fields.length-1? ',' : ''}</li>`;
+			return `<li class="formatted"><em class="name">${field.name}</em>: ${required}${type}</li>`;
 		}).join('\n\t\t')}
 	</ul>`;
 }
@@ -70,7 +70,7 @@ function renderEnum(int) {
 				<span class="type">enum</span>
 				<span class="name">
 					${int.name}
-					<svg class="underline"><rect fill="url('#wall')"/></svg>
+					<svg class="underline"><rect fill="url('#wall')" width="100%" height="100%"/></svg>
 				</span>
 			</h1>
 		</header>
@@ -119,7 +119,7 @@ function renderInterface(int) {
 			<span class="type">interface</span>
 			<span class="name">
 				${int.name}
-				<svg class="underline"><rect fill="url('#wall')"/></svg>
+				<svg class="underline"><rect fill="url('#wall')" width="100%" height="100%"/></svg>
 			</span>
 		</h1>
 ${renderInterface.withInheritance(int)}
@@ -304,15 +304,6 @@ function renderArguments(args) {
 
 
 
-
-/*function renderEnum(enume) {
-	var json = JSON.stringify(enume, null, '  ');
-	return `<code class="block">${json}</code>`;
-}
-
-function renderDictionary(dict) {
-	return '<code class="block">' + JSON.stringify(dict, null, '  ') + '</code>';
-}*/
 
 function renderImplements(impl) {
 	return '<code class="block">' + JSON.stringify(impl, null, '  ') + '</code>';

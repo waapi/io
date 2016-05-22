@@ -17,13 +17,26 @@ article.enum {
 
 
 header.landmark {
+/* 	border-bottom: 1px solid white; */
 	margin-bottom: 20px;
 	font: bold 30px/40px Body, sans-serif;
 }
 
 
 h1.title {
-	margin-bottom: 20px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+h1.title::after {
+	position: absolute;
+	top: 1.2em;
+	left: 0;
+	right: 0;
+	content: '';
+	height: 6px;
+	border-top: 1px dashed white;
+	border-bottom: 1px dashed white;
 }
 
 
@@ -77,11 +90,20 @@ article.index h2 {
 	margin-top: 60px;
 }
 
+article.index h2::before,
 article.index h2::after {
-	content: '.js';
+	white-space: pre;
 	color: hsl(215, 30%, 60%);
+	font-family: Code, monospace;
+	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
+article.index h2::before { content: '/*\A  * ' }
+article.index h2::after { content: '\A  */' }
+
+article.index h2::before { content: '/*------------------------------------------------------------------------*\\\A\9' }
+article.index h2::after { content: '\A */' }
 
 ul.index {
 	margin: 10px 0;
