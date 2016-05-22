@@ -8,7 +8,7 @@ layout: article
 			<span class="type">reference</span>
 			<span class="name">
 				WAAPI.io
-				<svg class="underline"><rect fill="url('#wall')"/></svg>
+				<svg class="underline"><rect fill="url('#wall')" width="100%" height="100%"/></svg>
 			</span>
 		</h1>
 	</header>

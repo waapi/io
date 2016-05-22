@@ -40,7 +40,7 @@ function renderDictionary(int) {
 				<span class="type">dictionary</span>
 				<span class="name">
 					${int.name}
-					<svg class="underline"><rect fill="url('#wall')"/></svg>
+					<svg class="underline"><rect fill="url('#wall')" width="100%" height="100%"/></svg>
 				</span>
 			</h1>
 		</header>

@@ -48,11 +48,6 @@ header.landmark span.name svg.underline {
 	border-bottom: 1px solid white;
 }
 
-header.landmark span.name svg.underline rect {
-	width: 100%;
-	height: 100%;
-}
-
 header.landmark span.inheritance em {
 	position: relative;
 	color: hsl(215, 100%, 95%);

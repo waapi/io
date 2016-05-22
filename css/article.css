@@ -66,9 +66,3 @@ svg.slash {
 	-webkit-transform: translate(-50%, -50%) rotate(-70deg);
 	transform: translate(-50%, -50%) rotate(-70deg);
 }
-
-svg.slash rect {
-	width: 100%;
-	height: 100%;
-	fill: url("#wall");
-}
