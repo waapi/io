@@ -226,7 +226,7 @@ renderInterface.withAttributes = function(int, attributes) {
 			attributes.map(function(attribute) {
 				return `
 		<tr>
-			<td class="readonly">${attribute.readonly? `<span class="readonly" title="Attribute is read-only; You can't set the value">read</span>` : ''}</td>
+		<td class="readonly">${attribute.readonly? `<span class="readonly" title="Attribute is read-only; You can't set the value">read</span>` : ''}</td>
 		<td class="formatted">${attribute.static? 'static ' : ''}foo.<em class="name">${attribute.name}</em> = ${renderType(attribute.idlType) + (attribute.idlType.nullable? ' || null' : '')}${attribute.inheritance? `\t<span class="inherited" title="This attribute is inherited via prototype from ${attribute.inheritance}">« ${attribute.inheritance}</span>` : ''}</td>
 		</tr>`
 		}).join('')}
@@ -324,7 +324,7 @@ function renderType(idlType, tag) {
 	
 	if(idlType.sequence)
 	{
-		return '<span class="sequence">[' + renderType(idlType.idlType) + ']</span>';
+		return `<span class="sequence">[${renderType(idlType.idlType)}]</span>`;
 	}
 	
 	switch(idlType.idlType)
@@ -346,7 +346,7 @@ function renderType(idlType, tag) {
 			if(waapi.names.includes(idlType.idlType))
 				return `<a class="internal" href="/${idlType.idlType}/">${idlType.idlType}</a>`;
 			else
-				return `<${tag} class="idltype">' + idlType.idlType + '</${tag}>`;
+				return `<${tag} class="idltype">${idlType.idlType}</${tag}>`;
 	}
 }
 
